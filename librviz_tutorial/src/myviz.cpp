@@ -33,9 +33,11 @@
 #include <QGridLayout>
 #include <QVBoxLayout>
 
-#include "rviz/visualization_manager.h"
-#include "rviz/render_panel.h"
-#include "rviz/display.h"
+#include <rviz/ogre_helpers/qt_widget_ogre_render_window.h>
+
+#include <rviz/visualization_manager.h>
+#include <rviz/render_panel.h>
+#include <rviz/display.h>
 
 #include "myviz.h"
 
@@ -60,10 +62,11 @@ MyViz::MyViz( QWidget* parent )
   controls_layout->addWidget( cell_size_slider, 1, 1 );
 
   // Construct and lay out render panel.
-  render_panel_ = new rviz::RenderPanel();
+  render_window_ = new rviz::QtWidgetOgreRenderWindow();
+  render_panel_ = new rviz::RenderPanel( render_window_ );
   QVBoxLayout* main_layout = new QVBoxLayout;
   main_layout->addLayout( controls_layout );
-  main_layout->addWidget( render_panel_ );
+  main_layout->addWidget( render_window_ );
 
   // Set the top-level layout for this MyViz widget.
   setLayout( main_layout );

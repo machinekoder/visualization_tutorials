@@ -36,6 +36,7 @@ namespace rviz
 class Display;
 class RenderPanel;
 class VisualizationManager;
+class QtWidgetOgreRenderWindow;
 }
 
 // BEGIN_TUTORIAL
@@ -54,6 +55,7 @@ private Q_SLOTS:
 private:
   rviz::VisualizationManager* manager_;
   rviz::RenderPanel* render_panel_;
+  rviz::QtWidgetOgreRenderWindow* render_window_;
   rviz::Display* grid_;
 };
 // END_TUTORIAL
